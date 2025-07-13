@@ -3,10 +3,10 @@ const userURL = "http://localhost:3000/users"
 export async function login(username, password){
     try{
         const url = new URL(userURL)
-        url.searchParams.append("user", username)
-        url.searchParams.append("password", password)
+        // url.searchParams.append("username", username)
+        // url.searchParams.append("password", password)
 
-        const resp = await fetch(url,{ method:"GET" });
+        const resp = await fetch(url,{ method:"POST", body: JSON.stringify({username, password}) });
 
         if (!resp.ok){ 
             throw new Error("Error la pagina no responde")
